@@ -1,14 +1,11 @@
-## 8. Sumar rango de números
+## 27. Traducir números a palabras
 
-Escribir una función llamada `sumarRango` que reciba dos argumentos: número inicial y número final. La función debe retornar la suma de los números en ese rango (incluyéndolos).
-
-**Nota:** puedes asumir que el número inicial va a ser menor o igual que el número final.
+Escribir una función llamada `numerosAPalabras` que reciba un arreglo de números (cada número en el rango de 0 a 0) y retorne un nuevo arreglo convirtiendo cada número a su versión en palabras.
 
 ```
-// escribe tu respuesta acá
+// escribe tu función acá
 
 // código de prueba
-console.log(sumarRango(0, 10)) // 55
-console.log(sumarRango(12, 14)) // 39
-console.log(sumarRango(5, 5)) // 0
+console.log(numerosAPalabras([0, 1, 2, 3, 4])) // ["cero", "uno", "dos", "tres", "cuatro"]
+console.log(numerosAPalabras([5, 6, 7, 8, 9])) // ["cinco", "seis", "siete", "ocho", "nueve"]
 ```

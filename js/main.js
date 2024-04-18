@@ -1,7 +1,11 @@
 import prompt from 'async-prompt'
-import {sumarRango} from "./module/sumarRangoDeNumeros.js";
+import { numerosAPalabras } from './module/traducirNumerosAPalabras.js'
 
-let num1 = Number(await prompt("Ingrese el numero 1: \n"))
-let num2 = Number(await prompt("Ingrese el numero 2: \n "))
+let lista = []
+let badera = undefined;
+do{
+    lista.push(Number(await prompt("Ingrese un numero: ")))
+    badera = Number(await prompt("¿Deseas ingrese otro numero?\n\t0.No\n\t1.Si\n"))
+}while(badera)
 
-console.log(sumarRango(num1, num2));
+console.log(numerosAPalabras(lista))
