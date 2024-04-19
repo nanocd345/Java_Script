@@ -1,12 +1,14 @@
-## 9 Número de aes (letra "a")
+## 7. Contar rango de números
 
-Escribir una función llamada `numeroDeAes` que reciba un string y retorne el número de veces que aparece la letra "a":
+Escribir una función llamada `contarRango` que reciba dos números y retorne cuántos números que hay entre ellos (excluyéndolos):
+
+**Nota:** Utiliza un ciclo en tu solución. Puedes asumir que el primer número va a ser menor que el segundo.
 
 ```
 // escribe tu respuesta acá
 
 // código de prueba
-console.log(numeroDeAes("abracadabra")) // 5
-console.log(numeroDeAes("etinol")) // 0
-console.log(numeroDeAes("")) // 0
+console.log(contarRango(1, 9)) // 7
+console.log(contarRango(1332, 8743)) // 7410
+console.log(contarRango(5, 6)) // 0
 ```

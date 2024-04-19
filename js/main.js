@@ -1,6 +1,5 @@
 import prompt from 'async-prompt'
-import { numeroDeAes } from './module/numeroDeAes.js';
+import {contarRango} from "./module/contarRangoDeNumeros.js"
 
-console.log(numeroDeAes("abracadabra"));
-
+console.log(contarRango(1332, 8743))
 
