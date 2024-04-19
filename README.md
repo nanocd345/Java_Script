@@ -1,14 +1,14 @@
-## 7. Contar rango de números
+## 14. Sumar arreglo entre el rango
 
-Escribir una función llamada `contarRango` que reciba dos números y retorne cuántos números que hay entre ellos (excluyéndolos):
+Escribir una función llamada `sumarArreglo` que reciba tres argumentos: un arreglo de números, la posición inicial y la posición final. La función debe retornar la suma de todos los números dentro del rango (la posición inicial y la posición final, incluyéndolas).
 
-**Nota:** Utiliza un ciclo en tu solución. Puedes asumir que el primer número va a ser menor que el segundo.
+**Nota:** puedes asumir que la posición inicial va a ser menor o igual a la posición final, y que están dentro de los límites del arreglo.
 
 ```
 // escribe tu respuesta acá
 
 // código de prueba
-console.log(contarRango(1, 9)) // 7
-console.log(contarRango(1332, 8743)) // 7410
-console.log(contarRango(5, 6)) // 0
+console.log(sumarArreglo([1, 2, 3], 1, 2)) // 5
+console.log(sumarArreglo([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 3, 6)) // 22
+console.log(sumarArreglo([7, 8, 9], 0, 0)) // 0
 ```

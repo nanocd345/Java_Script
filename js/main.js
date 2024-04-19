@@ -1,5 +1,4 @@
 import prompt from 'async-prompt'
-import {contarRango} from "./module/contarRangoDeNumeros.js"
+import { sumarArreglo } from './module/sumarArregloEntreElRango.js'
 
-console.log(contarRango(1332, 8743))
-
+console.log(sumarArreglo([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 0, 9));
