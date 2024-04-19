@@ -1,6 +1,6 @@
 import prompt from 'async-prompt'
+import { numeroDeAes } from './module/numeroDeAes.js';
 
-import { capitalizarPalabra } from './module/capitalizarCadaPalabra.js'
+console.log(numeroDeAes("abracadabra"));
 
-console.log(capitalizarPalabra("make it real"));
 
