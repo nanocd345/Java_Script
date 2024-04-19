@@ -1,11 +1,12 @@
-## 27. Traducir números a palabras
+## 17. Capitalizar cada palabra
 
-Escribir una función llamada `numerosAPalabras` que reciba un arreglo de números (cada número en el rango de 0 a 0) y retorne un nuevo arreglo convirtiendo cada número a su versión en palabras.
+Escribir una función llamada `capitalizar` que reciba un string y capitalice la primera letra **de cada palabra**:
 
 ```
 // escribe tu función acá
 
 // código de prueba
-console.log(numerosAPalabras([0, 1, 2, 3, 4])) // ["cero", "uno", "dos", "tres", "cuatro"]
-console.log(numerosAPalabras([5, 6, 7, 8, 9])) // ["cinco", "seis", "siete", "ocho", "nueve"]
+console.log(capitalizar("hola mundo")) // "Hola Mundo"
+console.log(capitalizar("make it real")) // "Make It Real"
+console.log(capitalizar("")) // ""
 ```
