@@ -9,5 +9,10 @@ import {
 import { 
     getAllPaymentsFromPaypalEachYear 
 } from "./module/payments.js";
+import { 
+    getAllClientsFromCityAndCode,
+    getAllClientsManagersWithTheirOfficeCity,
+    getAllClientsAndManagersName 
+} from "./module/clients.js";
 
-console.log(await getAllPaymentsFromPaypalEachYear());
+console.log(await getAll());

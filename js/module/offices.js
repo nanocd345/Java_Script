@@ -23,3 +23,11 @@ export const getAllOficceCityAndMovil = async()=>{
     })
     return dataUpdate
 }
+
+
+// Obtener toda la informacion de la oficina por codigo
+export const getOfficesByCode = async(code)=>{
+    let res = await fetch(`http://localhost:5504/offices?code_office=${code}`)
+    let data = await res.json();
+    return data
+}
