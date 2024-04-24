@@ -1,3 +1,6 @@
+import {
+    getClientPaymentByCode
+} from "./payments.js"
 import { 
     getEmployeesByCode 
 } from "./employees.js";
@@ -39,7 +42,7 @@ export const getAllClientsManagersWithTheirOfficeCity = async()=>{
         // Realizamos la consulta al fucion modular de los empleados para buscar
         // la informacion del empleado segun su id de la data cliente anterior
         // buscada
-        let [employee] = await getEmployeesByCode(clientUpdate.code_employee_sales_manager)
+        let [employee] = await /*getClientPaymentByCode*/getEmployeesByCode(clientUpdate.code_employee_sales_manager)
         
         let {
             id:id_employee,
@@ -104,6 +107,40 @@ export const getAllClientsAndManagersName = async () => {
     }
 };
 
-//6. Lista la dirección de las oficinas que tengan clientes en `Fuenlabrada`.
+// Obtener toda la informacion del cliente por codigo
+export const getClientsByCode = async(code)=>{
+    let res = await fetch(`http://localhost:5501/clients?city=${code}`)
+    let data = await res.json();
+    return data
+}
 
+//2. Muestra el nombre de los clientes que hayan realizado pagos junto con el nombre de sus representantes de ventas.
+/*Jsons Necesarios:
+clients
+payment
 
+Salida:
+client_name
+contact_name
+contact_lastname
+limit_credit
+id_transaction
+total
+
+*/
+export const getAllClientsAndManagersNameWithPayments = async () => {
+    try {
+        let res = await fetch("http://localhost:5501/clients");
+        let clients = await res.json();
+        let employeeNames = {};
+        clients.forEach(client => {
+            employeeNames[client.code_employee_sales_manager] = `${client.contact_name} ${client.contact_lastname}`;
+        });
+        clients.forEach(client => {
+            let salesManagerName = employeeNames[client.code_employee_sales_manager];
+            return console.log((`${client.client_name} - ${salesManagerName}`));
+        });
+    } catch (error) {
+        console.error("No hay datos:", error);
+    }
+};

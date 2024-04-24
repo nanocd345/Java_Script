@@ -1,6 +1,7 @@
 import { 
     getAllOficceAndCodeCity, 
-    getAllOficceCityAndMovil 
+    getAllOficceCityAndMovil,
+    getAllOfficeDirrectionAndClientsInFuenlabrada 
 } from "./module/offices.js";
 import { 
     getAllFullNameAndEmailsAndBoss,
@@ -12,7 +13,7 @@ import {
 import { 
     getAllClientsFromCityAndCode,
     getAllClientsManagersWithTheirOfficeCity,
-    getAllClientsAndManagersName 
+    getAllClientsAndManagersName
 } from "./module/clients.js";
 
-console.log(await getAll());
+console.log(await getAllOfficeDirrectionAndClientsInFuenlabrada());

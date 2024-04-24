@@ -20,3 +20,11 @@ export const getAllPaymentsFromPaypalEachYear = async() =>{
 
     return dataUpdate
 }
+
+
+// Obtener toda la informacion del cliente por codigo
+export const getClientPaymentByCode = async(code)=>{
+    let res = await fetch(`http://localhost:5505/payments?code_client=${code}`)
+    let data = await res.json();
+    return data
+}
