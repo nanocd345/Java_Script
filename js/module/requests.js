@@ -1,3 +1,7 @@
+import{
+    getAllClientsByCode
+} from "./clients.js"
+
 //Ejercicio N.7
 export const getAllPossibleStatus = async()=>{
     let res = await fetch("http://localhost:5508/requests")
@@ -54,7 +58,8 @@ export const getAllRejectedDeliverTwoDays = async()=>{
     }));
     return delivering;
 }
-//11
+
+
 
 export const getAllRejectedDeliverInYears = async()=>{
     let res = await fetch("http://localhost:5508/requests?status=Rechazado");
@@ -67,4 +72,29 @@ export const getAllRejectedDeliverInYears = async()=>{
         } 
     })
     return dataUpdate
+}
+
+// ejercicio 10 (multitabla)
+
+export const getAllClientsWhoHadDeliveredLate = async () => {
+    let res = await fetch(`http://localhost:5508/requests`);
+    let data = await res.json();
+    if (data.date_delivery > data.date_wait){
+        for(const val of dataCliente){
+            var [clients] = await getAllClientsByCode(val.code_client)
+            val.code_client = clients
+        }
+        for (let i = 0; i <data.length; i++){
+            let{...requestUpdate} = request[i]
+            request[i] = requestUpdate
+            let [clients] = await getAllClientsByCode(requestUpdate.code_client)
+            let{...clientsUpdate} = clients
+            let dataUpdate = {...requestUpdate, ...clientsUpdate}
+            request[i] = {
+                client_name: `${dataUpdate.client_name}`,
+            }
+        }
+    }
+    
+    return request
 }

@@ -1,4 +1,4 @@
-import {getAllClientsNotPayment} from "./clients.js"
+import {getAllClients, getAllClientsNotPayment} from "./clients.js"
 import {getEmployeesByIdCode} from "./employees.js"
 
 //Ejercicio N.8
@@ -122,3 +122,4 @@ export const getAllClientsWithNotPaymentsWithManagersSales = async()=>{
 
     return data;
 }
+

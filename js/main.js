@@ -1,6 +1,7 @@
 import { 
     getAllOficceAndCodeCity, 
     getAllOficceCityAndMovil
+
 } from "./module/offices.js";
 import { 
     getAllFullNameAndEmailsAndBoss,
@@ -12,7 +13,8 @@ import {
     getAllPaymentsIn2008WithPaypal,
     getAllPaymentsWays,
     getAllCompletedPayments,
-    getAllClientsWithNotPaymentsWithManagersSales
+    getAllClientsWithNotPaymentsWithManagersSales,
+    
 } from "./module/payments.js";
 import { 
     getAllSpanishClients,
@@ -25,12 +27,13 @@ import {
 } from "./module/clients.js";
 import {
     getAllOrnamentalsAndStockProducts
-} from "./module/products.js";
+} from "./module/product.js";
 import {
     getAllPossibleStatus,
     getAllRejectedDeliver,
     getAllRejectedDeliverTwoDays,
-    getAllRejectedDeliverInYears
+    getAllRejectedDeliverInYears,
+    getAllClientsWhoHadDeliveredLate
 } from "./module/requests.js";
 
-console.log(await getAllClientsWithNotPaymentsWithManagersSales());
+console.log(await getAllClientsWhoHadDeliveredLate());

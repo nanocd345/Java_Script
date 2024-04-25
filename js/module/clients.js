@@ -2,6 +2,12 @@ import {getEmployeesByCode, getEmployeesByIdCode} from "./employees.js"
 import {getOfficesByCode} from "./offices.js"
 import {getAllCompletedPayments} from "./payments.js"
 
+export const getAllClientsByCode = async (code) => {
+    let res = await fetch(`http://localhost:5501/clients?client_code=${code}`);
+    let data = await res.json(); 
+    return data
+}
+
 //Ejercicio N.6
 export const getAllSpanishClients = async()=>{
     let res = await fetch("http://localhost:5501/clients")
@@ -240,8 +246,5 @@ export const getAllAdressOfficesFunlabrada = async()=>{
     return client;
 } 
 
-// ejercicio 10 (multitabla)
 
-export const getAllClientsWhoHadDelivered = async()=>{
-    
-}
+
