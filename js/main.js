@@ -33,4 +33,4 @@ import {
     getAllRejectedDeliverInYears
 } from "./module/requests.js";
 
-console.log(await getAll());
+console.log(await getAllClientsWithNotPaymentsWithManagersSales());

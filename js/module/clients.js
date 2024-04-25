@@ -239,3 +239,9 @@ export const getAllAdressOfficesFunlabrada = async()=>{
     }   
     return client;
 } 
+
+// ejercicio 10 (multitabla)
+
+export const getAllClientsWhoHadDelivered = async()=>{
+    
+}
