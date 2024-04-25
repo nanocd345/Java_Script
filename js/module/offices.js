@@ -13,7 +13,7 @@ export const getAllOficceAndCodeCity = async() => {
 }
 
 //2 devuelve un listado con la ciudad y el telefono de las oficinas
-export const getAllOficceCityAndMobile = async()=>{
+export const getAllOficceCityAndMovil = async()=>{
     let res = await fetch("http://localhost:5504/offices?country=España")
     let data = await res.json()
     let dataUpdate = data.map(val =>{

@@ -3,7 +3,7 @@ import {getOfficesByCode} from "./offices.js"
 import {getAllCompletedPayments} from "./payments.js"
 
 //Ejercicio N.6
-export const getAllEspanishClients = async()=>{
+export const getAllSpanishClients = async()=>{
     let res = await fetch("http://localhost:5501/clients")
     let data = await res.json()
     let dataUpdate = []
@@ -32,9 +32,9 @@ export const getAllClients = async()=>{
     return dataUpdate
 } 
 
-//Ejercicio N.7 (Consulta Multitabla)
+//Ejercicio N.7 (Consulta Multitabla) Devuelve el nombre de los clientes y el nombre de sus representantes junto con la ciudad de la oficina a la que pertenece el representante.
 
-export const getAll = async()=>{
+export const getAllClientsAndManagersWithTheOfficeCity = async()=>{
     
     let res = await fetch("http://localhost:5501/clients")
     let client = await res.json();
@@ -89,12 +89,10 @@ export const getAllClientsWithSalesManagerName = async()=>{
     
     let res = await fetch("http://localhost:5501/clients")
     let client = await res.json();
-    /*
     for(const val of dataCliente){
         var [employee] = await getEmployeesByIdCode(val.code_employee_sales_manager)
         val.code_employee_sales_manager = employee
     }
-    */
     for(let i=0; i<client.length; i++){
         let {
             id:id_client,
@@ -152,8 +150,6 @@ export const getAllClientsWithPaymensAndSalesManagmentInfo = async()=>{
             continue;
         }
     }
-
-    /*
     for(let i=0; i<client.length; i++){
         let {
             id:id_client,
@@ -184,7 +180,6 @@ export const getAllClientsWithPaymensAndSalesManagmentInfo = async()=>{
             employees_full_name: `${data.name} ${data.lastname1} ${data.lastname2}`,
         }
     }
-    */
     return client;
 } 
 

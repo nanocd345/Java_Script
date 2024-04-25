@@ -1,19 +1,36 @@
 import { 
     getAllOficceAndCodeCity, 
-    getAllOficceCityAndMovil,
-    getAllOfficeDirrectionAndClientsInFuenlabrada 
+    getAllOficceCityAndMovil
 } from "./module/offices.js";
 import { 
     getAllFullNameAndEmailsAndBoss,
-    getBossFullNameAndEmail 
+    getBossPositionNamesAndEmail,
+    getAllNotSalesRepresentEmployee
 } from "./module/employees.js";
 import { 
-    getAllPaymentsFromPaypalEachYear 
+    getAllClientsUniques,
+    getAllPaymentsIn2008WithPaypal,
+    getAllPaymentsWays,
+    getAllCompletedPayments,
+    getAllClientsWithNotPaymentsWithManagersSales
 } from "./module/payments.js";
 import { 
-    getAllClientsFromCityAndCode,
-    getAllClientsManagersWithTheirOfficeCity,
-    getAllClientsAndManagersName
+    getAllSpanishClients,
+    getAllClients,
+    getAllClientsAndManagersWithTheOfficeCity,
+    getAllClientsWithSalesManagerName,
+    getAllClientsWithPaymensAndSalesManagmentInfo,
+    getAllClientsNotPayment,
+    getAllAdressOfficesFunlabrada
 } from "./module/clients.js";
+import {
+    getAllOrnamentalsAndStockProducts
+} from "./module/products.js";
+import {
+    getAllPossibleStatus,
+    getAllRejectedDeliver,
+    getAllRejectedDeliverTwoDays,
+    getAllRejectedDeliverInYears
+} from "./module/requests.js";
 
-console.log(await getAllOfficeDirrectionAndClientsInFuenlabrada());
+console.log(await getAll());

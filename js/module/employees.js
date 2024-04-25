@@ -17,7 +17,7 @@ export const getAllFullNameAndEmailsAndBoss = async () => {
 //4. Devuelve el nombre del puesto, nombre, aplleidos y
 //email del jefe de la empresa
 
-export const getBoss = async () => {
+export const getBossPositionNamesAndEmail = async () => {
     let res = await fetch("http://localhost:5502/employee");
     let data = await res.json();
     let dataUpdate = []
