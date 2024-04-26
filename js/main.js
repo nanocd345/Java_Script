@@ -1,7 +1,6 @@
 import { 
     getAllOficceAndCodeCity, 
     getAllOficceCityAndMovil
-
 } from "./module/offices.js";
 import { 
     getAllFullNameAndEmailsAndBoss,
@@ -13,8 +12,7 @@ import {
     getAllPaymentsIn2008WithPaypal,
     getAllPaymentsWays,
     getAllCompletedPayments,
-    getAllClientsWithNotPaymentsWithManagersSales,
-    
+    getAllClientsWithNotPaymentsWithManagersSales
 } from "./module/payments.js";
 import { 
     getAllSpanishClients,
@@ -23,17 +21,17 @@ import {
     getAllClientsWithSalesManagerName,
     getAllClientsWithPaymensAndSalesManagmentInfo,
     getAllClientsNotPayment,
-    getAllAdressOfficesFunlabrada
+    getAllAdressOfficesFunlabrada,
+    getAllAdressNotAtTimeDeliverClients
 } from "./module/clients.js";
 import {
     getAllOrnamentalsAndStockProducts
-} from "./module/product.js";
+} from "./module/products.js";
 import {
     getAllPossibleStatus,
     getAllRejectedDeliver,
     getAllRejectedDeliverTwoDays,
-    getAllRejectedDeliverInYears,
-    getAllClientsWhoHadDeliveredLate
+    getAllRejectedDeliverInYears
 } from "./module/requests.js";
 
-console.log(await getAllClientsWhoHadDeliveredLate());
+console.log(await getAllAdressNotAtTimeDeliverClients());
