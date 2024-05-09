@@ -1,7 +1,3 @@
-import{
-    getAllClientsByCode
-} from "./clients.js"
-
 //Ejercicio N.7
 export const getAllPossibleStatus = async()=>{
     let res = await fetch("http://localhost:5508/requests")
@@ -16,7 +12,6 @@ export const getAllPossibleStatus = async()=>{
 } 
 
 //Ejercicio N.9
-
 export const getAllRejectedDeliver = async()=>{
     let res = await fetch("http://localhost:5508/requests");
     let data = await res.json();
@@ -33,8 +28,7 @@ export const getAllRejectedDeliver = async()=>{
     return delivering;
 }
 
-//10
-
+//Ejercicio n.10
 export const getAllRejectedDeliverTwoDays = async()=>{
     let res = await fetch("http://localhost:5508/requests");
     let data = await res.json();
@@ -59,55 +53,35 @@ export const getAllRejectedDeliverTwoDays = async()=>{
     return delivering;
 }
 
-
-
+//Ejercicio N.11
 export const getAllRejectedDeliverInYears = async()=>{
     let res = await fetch("http://localhost:5508/requests?status=Rechazado");
     let data = await res.json();
     let dataUpdate = []
     data.forEach(val => {
         let [year] = val.date_request.split("-")
-        if(year == "2008"){
+        if(year == "2009"){
             dataUpdate.push(val)
         } 
     })
     return dataUpdate
 }
 
-//Filtrar los pedidos que no se entregaron a tiempo.
-export const getAllNotAtTimeDelivers = async() =>{
-    let res = await fetch(`http://localhost:5508/requests`)
-    let data = await res.json()
-    let dataUpdate = [];
-    let seenCodeClients = new Set();
-
+//Ejercicio N.12 
+export const getAllDeliveredPaymentsJanuary = async()=>{
+    let res = await fetch("http://localhost:5508/requests?status=Entregado");
+    let data = await res.json();
+    let dataUpdate = []
     data.forEach(val => {
-        if (new Date(val.date_delivery) > new Date(val.date_wait)) {
-            if (!seenCodeClients.has(val.code_client)) {
+        if (val.date_delivery!==null) {
+            let [year,month,days]=val.date_delivery.split("-");
+            if (month==="01") {
                 dataUpdate.push(val);
-                seenCodeClients.add(val.code_client);
             }
         }
-    });
-
-    return dataUpdate;
+    })
+    return dataUpdate
 }
 
 
-//Filtrar los datos de request
 
-export const getAllRequest = async(code) =>{
-    let res = await fetch(`http://localhost:5508/requests?code_client=${code}`)
-    let data = await res.json()
-    let info = {
-        code_client: undefined,
-        codes_requests: []
-    };
-    if (data !== undefined && data.length > 0) {
-        info.code_client = data[0].code_client;
-        for (let i of data) {
-            info.codes_requests.push(i.code_request);
-        }
-    }
-    return info;
-}

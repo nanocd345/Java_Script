@@ -1,5 +1,6 @@
-import {getAllClients, getAllClientsNotPayment} from "./clients.js"
-import {getEmployeesByIdCode} from "./employees.js"
+import {getAllClientsNotPayment} from "./client.js"
+import {getEmployByCode} from "./employees.js"
+
 
 //Ejercicio N.8
 export const getAllClientsUniques = async() =>{
@@ -18,8 +19,7 @@ export const getAllClientsUniques = async() =>{
     return dataUpdate;
 }
 
-//13 Devuelve un listado con todos los pagos que se realizaron en el año `2008` mediante `Paypal`. Ordene el resultado de mayor a menor.
-
+//Ejercicio N.13 
 export const getAllPaymentsIn2008WithPaypal = async() => {
     let res = await fetch("http://localhost:5505/payments")
     let data = await res.json();
@@ -40,7 +40,6 @@ export const getAllPaymentsIn2008WithPaypal = async() => {
 }
 
 //Ejercicio N.14
-
 export const getAllPaymentsWays = async() =>{
     let res = await fetch("http://localhost:5505/payments")
     let data = await res.json()
@@ -52,16 +51,7 @@ export const getAllPaymentsWays = async() =>{
     return dataUpdate;
 }
 
-//Filtrar los pagos completados por codigo
-
-export const getAllCompletedPayments = async(code) =>{
-    let res = await fetch(`http://localhost:5505/payments?code_client=${code}`)
-    let data = await res.json()
-    return data;
-}
-
-//Ejercicio N.3 (multitabla) y Ejercicio N.4
-
+//Ejercicio N.19
 export const getAllClientsWithNotPaymentsWithManagersSales = async()=>{
     
     let res = await fetch("http://localhost:5505/payments")
@@ -72,7 +62,7 @@ export const getAllClientsWithNotPaymentsWithManagersSales = async()=>{
         val.code_client = client_code
     }
     for(const val of dataCliente){
-        var [code_employee_sales_manager] = await getEmployeesByIdCode(val.code_client.code_employee_sales_manager)
+        var [code_employee_sales_manager] = await getEmployByCode(val.code_client.code_employee_sales_manager)
         val.code_client.code_employee_sales_manager = code_employee_sales_manager
     }
     for(let i=0; i<client.length; i++){
@@ -102,7 +92,7 @@ export const getAllClientsWithNotPaymentsWithManagersSales = async()=>{
             ...employeeUpdate
         } = clientes
         client[i] = employeeUpdate
-        let [employees] = await getEmployeesByIdCode(employeeUpdate.code_employee_sales_manager)
+        let [employees] = await getEmployByCode(employeeUpdate.code_employee_sales_manager)
         let {
             employee_code:employee_code,
             id:id_employee,
@@ -123,12 +113,12 @@ export const getAllClientsWithNotPaymentsWithManagersSales = async()=>{
     return data;
 }
 
-//20. Devuelve el nombre de los clientes que han hecho pagos y el nombre de sus representantes junto con la ciudad de la oficina a la que pertenece el representante.
-
-export const getAllClientsWhoPayAndTheirManagerAndHisOfficeCity = async() => {
+//Ejercicio N.20
+export const getAllClientsWithNotPayments = async()=>{
     let res = await fetch("http://localhost:5505/payments")
-    let client = await res.json();
-    for(let i=0; i<client.length; i++){
+    let data = await res.json()
+    let dataUpdate = []
+    for(let i=0; i<data.length; i++){
         let {
             payment:payment,
             limit_credit:limit_credit,
@@ -136,9 +126,9 @@ export const getAllClientsWhoPayAndTheirManagerAndHisOfficeCity = async() => {
             date_payment:date_payment,
             total:total,
             id:id,
-            ...PaymentUpdate} = client[i]
-    
-            client[i] = PaymentUpdate
+           ...PaymentUpdate} = data[i]
+
+        data[i] = PaymentUpdate
         let [clientes] = await getAllClientsNotPayment(PaymentUpdate.code_client)
         let {
             client_code: client_code,
@@ -152,11 +142,11 @@ export const getAllClientsWhoPayAndTheirManagerAndHisOfficeCity = async() => {
             postal_code: postal_code,
             limit_credit: limit_credit_clone,
             id: id_clone,
-            ...employeeUpdate
+           ...employeeUpdate
         } = clientes
-        client[i] = employeeUpdate
-        let [employees] = await getEmployeesByIdCode(employeeUpdate.code_employee_sales_manager)
-        let {
+        data[i] = employeeUpdate
+        let [employees] = await getEmployByCode(employeeUpdate.code_employee_sales_manager)
+        let{
             employee_code:employee_code,
             id:id_employee,
             extension,
@@ -164,14 +154,19 @@ export const getAllClientsWhoPayAndTheirManagerAndHisOfficeCity = async() => {
             code_office,
             code_boss,
             position,
-            ...employeeUpdateTrue
-        } = employees
-        var data = {...PaymentUpdate, ...employeeUpdate, ...employeeUpdateTrue}
-        client[i] = {
-            client_name: `${data.contact_name} ${data.contact_lastname}`,
-            employees_full_name: `${data.name} ${data.lastname1} ${data.lastname2}`,
+           ...employeeUpdateTrue
+        }=employees
+        var client = {...PaymentUpdate, ...employeeUpdate, ...employeeUpdateTrue}
+        data[i] = {
+            client_name: `${client.contact_name} ${client.contact_lastname}`,
+            employees_full_name: `${client.name} ${client.lastname1} ${client.lastname2}`,
         }
     }
-
+    return data;
+}
+//Filtrar los pagos completados por codigo
+export const getAllCompletedPayments = async(code) =>{
+    let res = await fetch(`http://localhost:5505/payments?code_client=${code}`)
+    let data = await res.json()
     return data;
 }
